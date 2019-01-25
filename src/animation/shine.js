@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const START_VALUE = 0;
 const END_VALUE = 100;
-const DURATION = 750;
+const DURATION = 1500;
 
 const styles = StyleSheet.create({
   shine: {
