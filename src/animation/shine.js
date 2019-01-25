@@ -1,6 +1,7 @@
 import React from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import { allowAnimation } from '../constant';
 
 const START_VALUE = 0;
 const END_VALUE = 100;
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
 /**
  * Create a repetitive Shine animation
  */
-const Shine = ({ children, onReady = false }) => {
+const Shine = ({ children }) => {
   const animation = new Animated.Value(0);
 
   function start() {
@@ -28,7 +29,7 @@ const Shine = ({ children, onReady = false }) => {
         toValue: END_VALUE,
         duration: DURATION,
       }),
-    ]).start(e => e.finished && onReady && start());
+    ]).start(e => e.finished && allowAnimation && start());
   }
 
   start();

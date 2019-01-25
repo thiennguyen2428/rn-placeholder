@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Animations from './animation/animations';
+import { stopAnimation, startAnimation } from './constant';
 
 const renderAnimation = (Animation, Component, props) => {
   if (!Animation) {
@@ -24,7 +25,12 @@ const connect = (PlaceholderComponent) => {
     } = props;
 
     if (onReady) {
+      stopAnimation();
       return children;
+    }
+
+    if (!onReady) {
+      startAnimation();
     }
 
     if (customAnimate) {
