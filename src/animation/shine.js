@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 /**
  * Create a repetitive Shine animation
  */
-const Shine = ({ children }) => {
+const Shine = ({ children, onReady = false }) => {
   const animation = new Animated.Value(0);
 
   function start() {
@@ -28,7 +28,7 @@ const Shine = ({ children }) => {
         toValue: END_VALUE,
         duration: DURATION,
       }),
-    ]).start(e => e.finished && start());
+    ]).start(e => e.finished && onReady && start());
   }
 
   start();
